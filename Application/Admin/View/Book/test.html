@@ -1,0 +1,25 @@
+<input id="file_upload" name="file_upload" type="file" enctype="multipart/form-data" multiple="true" value="" />
+<img id="img" src="http://www.thinkphp.cn/Public/new/img/header_logo.png" width="130" height="130" border="0" />
+	<div id="mes"></div>
+<link rel="stylesheet" href="__PUBLIC__/uploadify/uploadify.css">
+<script src="__PUBLIC__/vendors/jquery-1.9.1.js"></script>
+<script src="__PUBLIC__/uploadify/jquery.uploadify.min.js"></script>
+
+<script type="text/javascript">
+//上传插件
+$(function() {
+    $('#file_upload').uploadify({
+        'swf': '__PUBLIC__/uploadify/uploadify.swf',
+        'uploader': '{:U("PublicUse/Upload/upload")}',
+        'buttonText': '缩略图上传',
+        'method': 'post',
+        'onUploadSuccess': function(file, data, response) {
+        	$('#img').attr({
+        		src: '__ROOT__/Uploads/'+data,
+        	});
+        },
+    });
+    //图二
+
+});
+</script>

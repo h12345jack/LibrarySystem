@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>博雅图书馆，读书使人进步</title>
+    <meta name="description" content="Worthy a Bootstrap-based, Responsive HTML5 Template">
+    <meta name="author" content="htmlcoder.me">
+    <!-- Mobile Meta -->
+    <style type="text/css">
+    body {
+        font-family: '黑体';
+    }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="__PUBLIC__/images/favicon.ico">
+    <!-- Web Fonts -->
+    <!-- Bootstrap core CSS -->
+    <link href="__PUBLIC__/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="__PUBLIC__/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <!-- Plugins -->
+    <link href="__PUBLIC__/css/animations.css" rel="stylesheet">
+    <!-- Worthy core CSS file -->
+    <link href="__PUBLIC__/css/style.css" rel="stylesheet">
+    <!-- Custom css -->
+    <link href="__PUBLIC__/css/custom.css" rel="stylesheet">
+</head>
+
+<body class="no-trans">
+    <!-- scrollToTop -->
+    <!-- ================ -->
+    <div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+    <!-- header start -->
+    <!-- ================ -->
+    <header class="header fixed clearfix navbar navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- header-left start -->
+                    <!-- ================ -->
+                    <div class="header-left clearfix">
+                        <!-- logo -->
+                        <div class="logo smooth-scroll">
+                            <a href="#banner"><img id="logo" src="__PUBLIC__/images/logo.png" alt="Worthy"></a>
+                        </div>
+                        <!-- name-and-slogan -->
+                        <div class="site-name-and-slogan smooth-scroll">
+                            <div class="site-name">博雅图书馆</div>
+                            <div class="site-slogan">The time is passing. 時間在流逝。
+                            </div>
+                        </div>
+                    </div>
+                    <!-- header-left end -->
+                </div>
+                <div class="col-md-8">
+                    <!-- header-right start -->
+                    <!-- ================ -->
+                    <div class="header-right clearfix">
+                        <!-- main-navigation start -->
+                        <!-- ================ -->
+                        <div class="main-navigation animated">
+                            <!-- navbar start -->
+                            <!-- ================ -->
+                            <nav class="navbar navbar-default" role="navigation">
+                                <div class="container-fluid">
+                                    <!-- Toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li class="active"><a href="#banner">主页</a></li>
+                                            <li><a href="">关于我们</a></li>
+                                            <li><a href="#services">文化服务</a></li>
+                                            <li><a href="#clients">好评如潮</a></li>
+                                            <li><a href="#contact">联系我们</a></li>
+                                            <li><a href="{:U('PublicUse/Login/index')}">登陆后台</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                            <!-- navbar end -->
+                        </div>
+                        <!-- main-navigation end -->
+                    </div>
+                    <!-- header-right end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="bg-primary" id="search" style="padding-top:150px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <form action="{:U('Home/Index/search')}">
+                        <div class="input-group input-group-lg ">
+                            <input type="text" class="form-control" placeholder="输入您的检索词" name="term" id="js">
+                            <span class="input-group-btn">
+                             <button class="btn btn-success" type="submit">检索一下</button>
+                            </span>
+                        </div>
+                        <div class="input-group input-group-lg">
+                            <label class="radio-inline">
+                                <input type="radio" name="query" id="inlineRadio1" value="2" checked/> 标题
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="query" id="inlineRadio2" value="3" /> 作者
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="query" id="inlineRadio3" value="4" /> 出版年
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="query" id="inlineRadio4" value="5" /> 出版社
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="query" id="inlineRadio5" value="6" /> 摘要
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="small-padding" id="about">
+        <div class="container">
+            <h3 class="col-lg-8" id="js">{$result}</h3>
+            <volist name="data" id="t1">
+                <div class="row">
+                    <div class="panel panel-success col-lg-8 title1">
+                        <div class="panel-heading text-center">{$t1.num}</div>
+                        <div class="panel-body">
+                            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3">{$t1.title}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="5" class="col-md-4">
+                                            <img src="__ROOT__/Uploads/{$t1.cover}" width="130" height="130" class="img-polaroid" />
+                                        </td>
+                                        <td class="col-md-4">著者</td>
+                                        <td>
+                                            <volist name="t1['author']" id="t2">{$t2.name}--({$t2.country})&nbsp
+                                            </volist>
+                                        </td>
+                                    </tr>
+                                    <tr class="error">
+                                        <td>译者</td>
+                                        <td>
+                                            <volist name="t1['tranlator']" id="t2">{$t2.name}--({$t2.country})&nbsp
+                                            </volist>
+                                        </td>
+                                    </tr>
+                                    <tr class="success">
+                                        <td>出版</td>
+                                        <td>{$t1.publisher},{$t1.publish_year}</td>
+                                    </tr>
+                                    <tr class="error">
+                                        <td>isbn</td>
+                                        <td>{$t1.isbn}</td>
+                                    </tr>
+                                    <tr class="sucess">
+                                        <td>分类号</td>
+                                        <td>{$t1.type}</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <td colspan="3">{$t1.abstract|htmlspecialchars_decode}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+        </div>
+    </section>
+    {$page}
+    <!-- JavaScript files placed at the end of the document so the pages load faster
+        ================================================== -->
+    <!-- Jquery and Bootstap core js files -->
+    <script type="text/javascript" src="__PUBLIC__/plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Modernizr javascript -->
+    <script type="text/javascript" src="__PUBLIC__/plugins/modernizr.js"></script>
+    <!-- Isotope javascript -->
+    <script type="text/javascript" src="__PUBLIC__/plugins/isotope/isotope.pkgd.min.js"></script>
+    <!-- Backstretch javascript -->
+    <script type="text/javascript" src="__PUBLIC__/plugins/jquery.backstretch.min.js"></script>
+    <!-- Appear javascript -->
+    <script type="text/javascript" src="__PUBLIC__/plugins/jquery.appear.js"></script>
+    <!-- Initialization of Plugins -->
+    <script type="text/javascript" src="__PUBLIC__/js/template.js"></script>
+    <!-- Custom Scripts -->
+    <script type="text/javascript" src="__PUBLIC__/js/custom.js"></script>
+</body>
+
+</html>

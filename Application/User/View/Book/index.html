@@ -1,0 +1,32 @@
+<extend name='./Application/User/View/template.html' />
+<block name="adheader">
+    <link href="__PUBLIC__/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+</block>
+<block name="content">
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">欢迎你,{$_SESSION['username']}</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12 text-center" style="height:400px;">
+                    <h3>{$_SESSION['username']}，欢迎登入图书馆，你今天想做什么？</h3>
+                    <img src="__PUBLIC__/fd.png" alt="奋斗" width="50%" />
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="addjs">
+    <script src="__PUBLIC__/vendors/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/vendors/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="__PUBLIC__/assets/scripts.js"></script>
+    <script src="__PUBLIC__/assets/DT_bootstrap.js"></script>
+    <script>
+    $(function() {
+
+    });
+    </script>
+</block>

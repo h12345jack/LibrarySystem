@@ -1,0 +1,109 @@
+<extend name='./Application/User/View/template.html' />
+<block name="content">
+    <div class="row-fluid ">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">当前您的预定</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>书籍</th>
+                                <th>时间</th>
+                                <th>当前状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="data.booked" id="t1">
+                                <tr>
+                                    <td>{$t1.num}</td>
+                                    <td>{$t1.bookname}</td>
+                                    <td>{$t1.bookedtime|date="y年m月d日h时s分",###}</td>
+                                    <td>
+                                        <equal name="t1.can_borrowed" value="0">未归还</equal>
+                                        <equal name="t1.can_borrowed" value="1">已归还，可借</equal>
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">当前您的借阅</div>
+            </div>
+            <div class="block-content collapse in">
+                <div class="span12">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>书籍</th>
+                                <th>需归还时间</th>
+                                <th>当前续借次数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <volist name="data.borrow" id="t1">
+                                <tr>
+                                    <td>{$t1.num}</td>
+                                    <td>{$t1.bookname}</td>
+                                    <td>{$t1.needtime|date="y年m月d日h时s分",###}</td>
+                                    <td>{$t1.xjcs}</td>
+                                    <td>
+                                    	<equal name="t1.is_booked" value="0"><a href="{:U('User/Book/borrowagain',array('copyid'=>$t1['copyid']))}" class="btn btn-success">续借</a></equal>
+                                    	<equal name="t1.is_booked" value="1"><a href="#" class="btn btn-danger"><i class="icon-remove"></i>已被预约</a></equal>
+                                    
+                                    </td>
+                                </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+</block>
+<block name="addjs">
+    <link href="__PUBLIC__/vendors/datepicker.css" rel="stylesheet" media="screen">
+    <link href="__PUBLIC__/vendors/uniform.default.css" rel="stylesheet" media="screen">
+    <link href="__PUBLIC__/vendors/chosen.min.css" rel="stylesheet" media="screen">
+    <link href="__PUBLIC__/vendors/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
+    <script src="__PUBLIC__/vendors/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/vendors/jquery.uniform.min.js"></script>
+    <script src="__PUBLIC__/vendors/chosen.jquery.min.js"></script>
+    <script src="__PUBLIC__/vendors/bootstrap-datepicker.js"></script>
+    <script src="__PUBLIC__/vendors/wysiwyg/wysihtml5-0.3.0.js"></script>
+    <script src="__PUBLIC__/vendors/wysiwyg/bootstrap-wysihtml5.js"></script>
+    <script src="__PUBLIC__/vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="__PUBLIC__/assets/form-validation.js"></script>
+    <script src="__PUBLIC__/assets/scripts.js"></script>
+    <script>
+    jQuery(document).ready(function() {
+        FormValidation.init();
+    });
+
+
+    $(function() {
+        $(".datepicker").datepicker();
+        $(".uniform_on").uniform();
+        $(".chzn-select").chosen();
+        $('.textarea').wysihtml5();
+
+    });
+    </script>
+</block>

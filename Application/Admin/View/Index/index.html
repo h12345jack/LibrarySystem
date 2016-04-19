@@ -1,0 +1,59 @@
+<extend name='./Application/Admin/View/template.html' />
+<block name="adheader">
+    <link href="__PUBLIC__/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+</block>
+<block name="content">
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">图书</div>
+            </div>
+            <div class="block-content collapse in">
+                <form class="form-horizontal" action="{:U('Admin/Book/find_book')}">
+                    <fieldset>
+                        <div id="legend" class="">
+                            <legend class="">图书检索</legend>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label"></label>
+                            <!-- Button -->
+                            <div class="controls">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Search input-->
+                            <div class="controls">
+                                <input type="text" placeholder="输入您想要查找的内容" class="input-xlarge focused span6" name="term"/>
+                                <select class="input-xlarge span2" name="query">
+                                   
+                                    <option value="2">标题</option>
+                                     <option value="1">书号</option>
+                                    <option value="3">作者</option>
+                                    <option value="4">出版年</option>
+                                    <option value="5">出版社</option>
+                                    <option value="6">摘要</option>
+                                    <option value="7">不限</option>
+                                </select>
+                                <input class="btn btn-primary" type="submit" value="检索" />
+                            </div>
+                        </div>
+                        
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="addjs">
+    <script src="__PUBLIC__/vendors/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/vendors/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="__PUBLIC__/assets/scripts.js"></script>
+    <script src="__PUBLIC__/assets/DT_bootstrap.js"></script>
+    <script>
+    $(function() {
+
+    });
+    </script>
+</block>

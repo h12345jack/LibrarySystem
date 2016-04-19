@@ -1,0 +1,91 @@
+<!-- basic scripts -->
+<!--[if !IE]> -->
+<script type="text/javascript">
+window.jQuery || document.write("<script src='__PUBLIC__/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+</script>
+<!-- <![endif]-->
+<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='__PUBLIC__/assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+if ("ontouchend" in document) document.write("<script src='__PUBLIC__/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+<script src="__PUBLIC__/assets/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/assets/js/typeahead-bs2.min.js"></script>
+<!-- page specific plugin scripts -->
+<!--[if lte IE 8]>
+          <script src="assets/js/excanvas.min.js"></script>
+        <![endif]-->
+<script src="__PUBLIC__/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery.slimscroll.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery.easy-pie-chart.min.js"></script>
+<script src="__PUBLIC__/assets/js/jquery.sparkline.min.js"></script>
+<!-- ace scripts -->
+<script src="__PUBLIC__/assets/js/ace-elements.min.js"></script>
+<script src="__PUBLIC__/assets/js/ace.min.js"></script>
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+$('.sparkline').each(function() {
+    var $box = $(this).closest('.infobox');
+    var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
+    $(this).sparkline('html', {
+        tagValuesAttribute: 'data-values',
+        type: 'bar',
+        barColor: barColor,
+        chartRangeMin: $(this).data('min') || 0
+    });
+});
+
+
+
+
+
+/**
+         we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
+         so that's not needed actually.
+         */
+
+
+
+
+$('.dialogs,.comments').slimScroll({
+    height: '300px'
+});
+
+
+//Android's default browser somehow is confused when tapping on label which will lead to dragging the task
+//so disable dragging when clicking on label
+var agent = navigator.userAgent.toLowerCase();
+if ("ontouchstart" in document && /applewebkit/.test(agent) && /android/.test(agent))
+    $('#tasks').on('touchstart', function(e) {
+        var li = $(e.target).closest('#tasks li');
+        if (li.length == 0) return;
+        var label = li.find('label.inline').get(0);
+        if (label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation();
+    });
+
+$('#tasks').sortable({
+    opacity: 0.8,
+    revert: true,
+    forceHelperSize: true,
+    placeholder: 'draggable-placeholder',
+    forcePlaceholderSize: true,
+    tolerance: 'pointer',
+    stop: function(event, ui) { //just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
+        $(ui.item).css('z-index', 'auto');
+    }
+});
+$('#tasks').disableSelection();
+$('#tasks input:checkbox').removeAttr('checked').on('click', function() {
+if (this.checked) $(this).closest('li').addClass('selected');
+else $(this).closest('li').removeClass('selected');
+});
+
+
+</script>
+</body>
+
+</html>

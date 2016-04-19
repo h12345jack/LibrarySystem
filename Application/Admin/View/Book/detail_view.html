@@ -1,0 +1,278 @@
+<extend name='./Application/Admin/View/template.html' />
+<block name="content">
+    <div class="row-fluid">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">图书修改</div>
+            </div>
+            <div class="block-content collapse in">
+                <!-- BEGIN FORM-->
+                <div class="span12">
+                    <form action="{:U('Admin/Book/update_book')}" id="form_sample_1" class="form-horizontal" method="post">
+                        <fieldset>
+                           
+                            <div class="control-group">
+                                <label class="control-label">封面<span class="required">*</span></label>
+                                <div class="controls span5">
+                                    <img id="img" src="__ROOT__/Uploads/{$data.cover}" width="130" height="130" border="0" />
+                                    <hr/>
+                                    <input id="file_upload" name="file_upload" type="file" enctype="multipart/form-data" multiple="true" value="{$data.cover}" />
+                                    <input id="upload" name="upload" type="hidden" value="{$data.cover}" />
+                                    <input id="upload" name="id" type="hidden" value="{$data.id}" />
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">标题<span class="required">*</span></label>
+                                <div class="controls span5">
+                                    <input name="title" type="text" class="span6 m-wrap" value="{$data.title}" />
+                                    <span class="help-block">e.g:穆斯林的葬礼</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="date">出版时间</label>
+                                <div class="controls">
+                                    <input type="text" class="input-xlarge" id="date" data-date-format="yyyy" name='date' value="{$data.publish_year}">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">出版社<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input name="publisher" type="text" class="span6 m-wrap" value="{$data.publisher}" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">ISBN<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input name="isbn" type="text" class="span6 m-wrap" value="{$data.isbn}" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">分类号<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input name="type" type="text" class="span6 m-wrap" value="{$data.type}" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">书的价格<span class="required">*</span></label>
+                                <div class="controls">
+                                    <input name="price" type="text" class="span6 m-wrap" value="{$data.price}" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="span8" id="content">
+                                        <div class="row-fluid">
+                                            <!-- block -->
+                                            <div class="block">
+                                                <div class="navbar navbar-inner block-header">
+                                                    <div class="muted pull-left">摘要</div>
+                                                </div>
+                                                <div class="block-content collapse in">
+                                                    <textarea id="ckeditor_standard" name="abstract" >{$data.abstract}</textarea>
+                                                </div>
+                                            </div>
+                                            <!-- /block -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <volist name="data['author']" id="t2">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="span8">
+                                        <div class="block">
+                                            <div class="navbar navbar-inner block-header">
+                                                <div class="muted pull-left">作者{$t2.var}</div>
+                                            </div>
+                                            <div class="block-content collapse in">
+                                                <div class="span12">
+                                                    姓名：
+                                                    <input name="creatorname{$t2.var}" type="text" id="creatorname1" class="span2 m-wrap text-center" value="{$t2.name}" /> 国籍：
+                                                    <input name="creatorcountry{$t2.var}" type="text" class="span2 m-wrap text-center" value="{$t2.country}" /> 出生：
+                                                    <input type="text" class="span2 m-wrap text-center" data-date-format="yyyy" name='creatorbirthday{$t2.var}' value="{$t2.birthday}">
+                                                    <hr/> 身份：
+                                                    <input name="creatorrole{$t2.var}" value="1" type="radio" checked/> <span class="lbl">作者</span>
+                                                    <input name='creatorid{$t2.var}' type="hidden" value="{$t2.id}" />
+                                                    <input name="creatorrole{$t2.var}" value="2" type="radio" /> <span class="lbl">译者</span>
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                         <volist name="data['translator']" id="t2">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <div class="span8">
+                                        <div class="block">
+                                            <div class="navbar navbar-inner block-header">
+                                                <div class="muted pull-left">作者{$t2.var}</div>
+                                            </div>
+                                            <div class="block-content collapse in">
+                                                <div class="span12">
+                                                    姓名：
+                                                    <input name="creatorname{$t2.var}" type="text" id="creatorname1" class="span2 m-wrap text-center" value="{$t2.name}" /> 国籍：
+                                                    <input name="creatorcountry{$t2.var}" type="text" class="span2 m-wrap text-center" value="{$t2.country}" /> 出生：
+                                                    <input type="text" class="span2 m-wrap text-center" data-date-format="yyyy" name='creatorbirthday{$t2.var}' value="{$t2.birthday}">
+                                                    <hr/> 身份：
+                                                    <input name="creatorrole{$t2.var}" value="1" type="radio" /> <span class="lbl">作者</span>
+                                                    <input name='creatorid{$t2.var}' type="hidden" value="{$t2.id}" />
+                                                    <input name="creatorrole{$t2.var}" value="2" type="radio" checked="" /> <span class="lbl">译者</span>
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                            <hr/>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="button" class="btn  btn-info more">+填加更多作者</button>
+                                </div>
+                            </div>
+                            <div class="controls">
+                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="button" class="btn">取消</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
+</block>
+<block name="addjs">
+    <link href="__PUBLIC__/vendors/datepicker.css" rel="stylesheet" media="screen">
+    <link href="__PUBLIC__/vendors/uniform.default.css" rel="stylesheet" media="screen">
+    <link href="__PUBLIC__/vendors/chosen.min.css" rel="stylesheet" media="screen">
+    <link href="__PUBLIC__/vendors/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
+    <script src="__PUBLIC__/vendors/jquery-1.9.1.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/vendors/jquery.uniform.min.js"></script>
+    <script src="__PUBLIC__/vendors/chosen.jquery.min.js"></script>
+    <script src="__PUBLIC__/vendors/bootstrap-datepicker.js"></script>
+    <script src="__PUBLIC__/vendors/wysiwyg/wysihtml5-0.3.0.js"></script>
+    <script src="__PUBLIC__/vendors/wysiwyg/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="__PUBLIC__/assets/form-validation1.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/uploadify/uploadify.css">
+    <script src="__PUBLIC__/assets/scripts.js"></script>
+    <script src="__PUBLIC__/uploadify/jquery.uploadify.js"></script>
+    <script src="__PUBLIC__/vendors/wysiwyg/bootstrap-wysihtml5.js"></script>
+    <script src="__PUBLIC__/vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="__PUBLIC__/vendors/ckeditor/ckeditor.js"></script>
+    <script src="__PUBLIC__/vendors/ckeditor/adapters/jquery.js"></script>
+    <script src="__PUBLIC__/vendors/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        // Bootstrap
+        $('#bootstrap-editor').wysihtml5();
+
+        // Ckeditor standard
+        $('textarea#ckeditor_standard').ckeditor({
+            width: '98%',
+            height: '150px',
+            toolbar: [{
+                    name: 'document',
+                    items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates']
+                }, // Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
+                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], // Defines toolbar group without name.
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic']
+                }
+            ]
+        });
+        $('textarea#ckeditor_full').ckeditor({
+            width: '98%',
+            height: '150px'
+        });
+    });
+
+    // Tiny MCE
+    tinymce.init({
+        selector: "#tinymce_basic",
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+
+    // Tiny MCE
+    tinymce.init({
+        selector: "#tinymce_full",
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor"
+        ],
+        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+        toolbar2: "print preview media | forecolor backcolor emoticons",
+        image_advtab: true,
+        templates: [{
+            title: 'Test template 1',
+            content: 'Test 1'
+        }, {
+            title: 'Test template 2',
+            content: 'Test 2'
+        }]
+    });
+    </script>
+    <script type="text/javascript">
+    //上传插件
+
+    $(function() {
+        $('#file_upload').uploadify({
+            'swf': '__PUBLIC__/uploadify/uploadify.swf',
+            'uploader': '{:U("PublicUse/Upload/upload")}',
+            'buttonText': '缩略图上传',
+            'method': 'post',
+            'onUploadSuccess': function(file, data, response) {
+                $('#img').attr({
+                    src: '__ROOT__/Uploads/' + data,
+                });
+                $('#upload').attr({
+                    value: data,
+                });
+            },
+        });
+        //图二
+
+    });
+    </script>
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        FormValidation.init();
+    });
+    var num = 1;
+    var num2 = {$data.num};
+    $('#plus1').click(function(event) {
+        $('#number').attr({
+            value: num += 1,
+        });;
+    });
+    $('#plus2').click(function(event) {
+        if (num > 1) {
+            $('#number').attr({
+                value: num -= 1,
+            });;
+        }
+    });
+    $('.more').click(function(event) {
+        num2++;
+        var now = "<div class=\"control-group\"><div class=\"controls\"><div class=\"span8\"><div class=\"block\"><div class=\"navbar navbar-inner block-header\"><div class=\"muted pull-left\">作者" + num2 + "</div></div><div class=\"block-content collapse in\"><div class=\"span12\">姓名：<input name=\"creatorname" + num2 + "\" type=\"text\" id=\"creatorname" + num2 + "\" class=\"span2 m-wrap text-center\" value=\"\" /> 国籍<input name=\"creatorcountry" + num2 + "\" type=\"text\" class=\"span2 m-wrap text-center\" value=\"\" /> 出生：<input type=\"text\" class=\"span2 m-wrap text-center\" data-date-format=\"yyyy\" name='creatordate" + num2 + "' value=\"20" + num2 + "5\"><hr/> 身份：<input name=\"creatorrole" + num2 + "\" value=\"1\" type=\"radio\"  checked/> <span class=\"lbl\">作者</span><input name=\"creatorrole" + num2 + "\" value=\"2\" type=\"radio\" /> <span class=\"lbl\">译者</span><hr/></div></div></div></div></div></div><hr/>";
+        $(".control-group:last").before(now);
+    });
+    </script>
+</block>
