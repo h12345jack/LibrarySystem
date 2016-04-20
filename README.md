@@ -54,9 +54,11 @@ E-R图如下：
 各表的具体属性如下：
 
 （1） 图书书目表:yzz_book
+
  ![](http://ww1.sinaimg.cn/large/8785ef6ejw1f32g2orj85j20ta0543zs.jpg)
  
 （2） 图书复本表:yzz_copy
+
  ![](http://ww1.sinaimg.cn/large/8785ef6ejw1f32g2zkr1vj20er04ewf4.jpg)
  
 （3）著者（即作者与译者）表: yzz_creator
