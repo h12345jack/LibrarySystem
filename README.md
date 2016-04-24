@@ -2,9 +2,13 @@
 使用了[ThinkPHP](http://www.thinkphp.cn)，虽然本人觉得该框架实在有点反人类，但是也算是第一次使用PHP的框架。
 可以对于MVC有更深的理解。网址在[这里](h12345jack.tk/homework/db/library_system)
 前端这样：
+
 ![](http://ww1.sinaimg.cn/mw690/8785ef6ejw1f37po7yjs9j21570ju40s.jpg)
+
 后台这样：
+
 ![](http://ww3.sinaimg.cn/mw690/8785ef6ejw1f37ppiky34j21h00gan1p.jpg)
+
 好像是有角色管理，记不得了。年久失修。
 后面大概是报告的内容，当时用word写的。手转了一份MD
 
