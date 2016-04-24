@@ -1,4 +1,10 @@
-﻿##  功能设计
+﻿# 数据库小组作业
+使用了[ThinkPHP](http://www.thinkphp.cn)，虽然本人觉得该框架实在有点反人类，但是也算是第一次使用PHP的框架。
+可以对于MVC有更深的理解。网址在[这里](h12345jack.tk/homework/db/libarary_system)
+
+
+
+##  功能设计
 ### 数据库设计
 ####   需求分析
 #####  系统任务
