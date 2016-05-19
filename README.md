@@ -1,6 +1,6 @@
 ﻿# 数据库小组作业
 使用了[ThinkPHP](http://www.thinkphp.cn)，虽然本人觉得该框架实在有点反人类，但是也算是第一次使用PHP的框架。
-可以对于MVC有更深的理解。网址在[这里](h12345jack.tk/homework/db/library_system)
+可以对于MVC有更深的理解。网址在[这里](http://h12345jack.tk/homework/db/library_system)
 前端这样：
 
 ![](http://ww1.sinaimg.cn/mw690/8785ef6ejw1f37po7yjs9j21570ju40s.jpg)
